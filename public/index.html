@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Add Data</title>
+  
+</head>
+<style>
+body {
+  font-family: 'Georgia', serif;
+  background-color: #f2e9cb;
+  color: #657b83;
+}
+
+h1 {
+ 
+  font-family: 'Georgia', serif;
+  color: #0e0e0e;
+  border: #0d0303;
+}
+
+form {
+  position: relative;
+  padding-top: 30px;
+  padding-left: 100px;
+  max-width: 400px;
+  margin-bottom: 0px;
+  color: #93a1a1;
+
+
+}
+
+label {
+  display: block;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #cb4b16;
+  
+  color: #fff;
+  border: none;
+}
+
+button:hover {
+  background-color: #e3d7d7;
+  border: 2px solid #93a1a1;
+  color:#0d0303;
+}
+
+@media only screen and (max-width: 768px) {
+  main, input, button {
+    width: 90%;
+  }
+}
+
+</style>
+<body>
+<h1>Add Data to Google Sheets</h1>
+
+<form id="addDataForm">
+  <label for="nameInputtt">Name:</label>
+  <input type="text" id="nameInput" name="name" required>
+
+  <label for="deptInput">Department Number:</label>
+  <input type="text" id="deptInput" name="department" required>
+
+  <label for="complaintInput">Complaint:</label>
+  <input type="text" id="complaintInput" name="complaint" required>
+
+  <label for="treatmentInput">Treatment:</label>
+  <input type="text" id="treatment1Input" name="treatment" required>
+
+  <label for="prescribed_byInput">prescribed_by:</label>
+  <input type="text" id="prescribed_byInput" name="prescribed_by" required>
+  
+  <label for="dateInput">date:</label>
+  <input type="text" id="dateInput" name="date" required>
+
+  <label for="timeInput">time:</label>
+  <input type="text" id="timeInput" name="time" required>
+
+  <button type="submit">Add Data</button>
+</form>
+
+<script>
+document.getElementById('addDataForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  const formData = new FormData(this);
+
+  fetch('/addData', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(Object.fromEntries(formData)),
+  })
+    .then(response => response.json())
+    .then(data => {
+      alert(data.message);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+});
+</script>
+</body>
+</html>

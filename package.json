@@ -1,0 +1,25 @@
+{
+  "name": "giitt",
+  "version": "1.0.0",
+  "description": "Host backend app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "build": "webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "backend"
+  ],
+  "author": "yashwanth",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "googleapis": "^133.0.0",
+    "http2": "^3.3.7"
+  },
+  "devDependencies": {
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  }
+}
